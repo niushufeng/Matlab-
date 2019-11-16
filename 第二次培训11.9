@@ -1,0 +1,209 @@
+11.9文档
+(1)建立.m文档，矩阵找出比50大的
+a=[12 56 78 23 90 766 456];
+b=50;
+a>b
+用循环来处理a>b
+for i=1:7//(从1到7)     i=1:2:7//以2为间距    [c d]size(a)=1    7       i=1:d//从1访问到结尾
+	if a(i)>b
+	   a(i)=1
+	else
+	   a(i)=0
+	end
+end
+(2)
+a=[12 56 78; 65 87 0; 98 7623 90 ;766 54 456];
+[cc dd]=size(a);
+for i=1:cc
+	for j=1:dd
+	if(ai,j)>50
+		a(i,j)=1;
+	else          a(i,j)=0;
+	end
+end
+(3)求一元二次方程的根
+ax^2+bx^2+c=0;
+a=input('请输入系数a');
+b=input('请输入系数b');
+c=input('请输入系数c');
+delta=b^2-4*a*c;
+if (delta)>0
+	x1=(-b+sqrt(delta))/(2*a)
+	x2=(-b-sqrt(delta))/(2*a)
+	fprintff('2个实根：')；
+	x1
+	fprintf(',')；
+	x2
+elseif//把if否了   (detal==0)
+	x1=(-b+sqrt(delta))/(2*a)；
+	fprintf('2个相同的实根：')；
+	x1
+else //虚根       a^2+b^2+c=0
+      	real_a=-b/(2*a)
+	imag_b=(sqrt(abs(detal)))/(2*a)//?????????????????????????????????
+	fprintf('2个虚根：')；
+	x1=real_a+imag_a*i;
+	fprint(',')
+	x2=real_a-imag_a*i;
+end 
+(3)switch
+a=input('输入一个不超过5的整数')
+switch a
+	case 1 
+		b='apple';
+	otherwise
+		b='out put'
+end
+disp(b)//显示函数，直接将内容输出在matlab命令窗口中
+(4)
+function //函数
+	y=gongu(x1,x2)
+y=sqrt(x1^2+x2^2)
+end
+(5)椭圆的周长的面积
+function [y1 y2]=ellapse(a,b)
+y1=pi*a*b;
+y2=2*pi*b+4*(a-b);
+end 
+>>[f1 f2]=ellapse(4,3)
+(6)递归，老和尚讲故事
+求9!阶乘
+x=9;
+y=1
+for i=1:x
+	y=y*i;
+end
+//方法二
+function y=factorial(x)
+if x==1;
+	y=1;
+else y=x*facyorial(x-1);
+end
+(6)解线性方程组
+x1+2*x2+3*x3=2
+3*x1-5*x2+4*x3=0
+7*x1+8*x3+9+x3=2
+
+a=[1 2 3;3 -5 4;7 8 9];
+b=[2 0 2]'
+x=inv(a)*b//inv函数是求一个方阵的逆矩阵
+a\b左除//由于举证的特殊性，A*B通常不等于B*A，除法也一样。所以要区分左右。右除式A/B相当于A*inv(B)
+左除式A\B相当于inv(A)*B，也就是说：A右除B，相当于A右乘B的逆矩阵，A左除B，相当于A左乘B的逆矩阵，
+(7)解方程组
+eq1='x^2-x-6=0';
+eq2='x^2+2*x+4=0';
+eq3='3*x+2*y-z=10';
+eq4='-x+3*y+2*z=5';
+eq5='x-y-z=-1';
+a=solve(eq3,eq4,eq5);
+(8)
+r=roots([6 24 60 96 102 72])//roots函数为求多项式的根，r=6*x^5+24*x^4+60*x^3+96*x^2+102*x^1+72*x^0
+二、绘图.m
+(1)
+x1=-17:1:3;
+y1=1./((x1+3).^2+1)+1./((x1+9).^2+4)+1.
+//点除和除
+x2=-17:0.02;3;
+y3=1./((x1+3).^2+1)+1./((x1+9).^2+4)+1.
+subplot(2,2,1);//2行2列，画第一个图
+plot(x1,y1,'rp');
+axis([-17 3 5 6.5]);//x轴从-17到3,y轴从5到6.5
+subplot(2,2,2);//2行2列，画第2个图
+plot(x2,y2,'rp');
+axis([-17 3 5 6.5]);//x轴从-17到3,y轴从5到6.5
+subplot(2,2,3);//2行2列，画第3个图
+plot(x1,y1,x2,y2,'rp');
+axis([-17 3 5 6.5]);//x轴从-17到3,y轴从5到6.5
+subplot(2,2,4);//2行2列，画第4个图
+plot(x2,y2,'LineWidth',2);//线宽为2
+axis([-17 3 5 6.5]);//x轴从-17到3,y轴从5到6.5
+grid on;//给图带上网格
+
+t=[0:pi/50:2*pi]';
+x=4*sin(t);
+y=5*cos(t);
+subplot(2,2,1);//椭圆
+plot(x,y);
+axis normal;//全尺寸
+grid on;
+
+subplot(2,2,2);
+plot(x,y);
+axis equal;//比例压缩
+grid on;
+
+subplot(2,2,3);
+plot(x,y);
+axis image fill,box off;//占满,边框消失
+grid on;
+
+subplot(2,2,4);
+plot(x,y);
+axis tight,box off;//把坐标范围定为合适的范围
+grid on;
+三、三维绘制
+figure;
+x=linspace(0,3*pi,200);
+z1=sin(x);
+z2=sin(2*x);
+z3=sin(3*x);
+y1=zeros(size(x));
+y2=ones(size(x));//1矩阵
+y3=y2*2;
+plot3(x,y1,z1,'r*',x,y2,z2,'bp',x,y3,z3,'mx')
+grid on;
+view(60,60)//角度，左60度，右60度
+四、插值定义
+(1)
+t=[0:1.5:2*pi]//5个点
+y=sin(t);
+plot(t,y);
+
+x=0:0.4:2*pi;
+yi_linear=interp1(t,y,x)//线性采样
+figure;
+plot(x,yi_linear,'rs');
+
+yi_nearest=interp1(t,y,x,'nearest')//临近采样
+figure;
+plot(x,yi_nearest,'rs');
+
+yi_nearest=interp1(t,y,x,'nearest')//临近采样 cublic//v5cublic//sp???????????
+figure;
+plot(x,yi_nearest,'rs');
+(2)拟合插入
+x=0:0.1:1;
+y=[-0.447 1.978 3.28 6.16 7.08 7.44 ]
+n=2;
+p=ployfit(x,y,2);//拟合2次
+五、图像开发,处理就是对矩阵处理
+(1)逆反图片
+[X,M]=imread('lena.bmp');//读取图片
+if isragb(x)
+[X,M]=rgb2ind(X,M);
+end
+s=ind2gray(X,M);
+ss=[];
+[row,col]=size(s);
+for i=1:col;
+	ss(:,i)=s(:,col-i+1);
+end
+imshow(s);
+imshow(ss);
+(2)
+[X,M]=imread('lena.bmp');//读取图片
+if isragb(x)
+	[X,M]=rgb2ind(X,M);
+end
+s=ind2gray(X,M);
+imshow(s);
+[row,col]=size(s);
+ss=[];
+for i=2:row-1
+	for j=2:col-1
+	s(i,j)=s(i,j-1)-s(i,j+1);
+	end
+end	
+imshow(ss);
+(3)图像处理题
+碎纸问题
